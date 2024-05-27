@@ -6,9 +6,9 @@ namespace Domain.Models;
 public class Storage
 {
     /// <summary>
-    /// <see cref="Good"/>.
+    /// <see cref="Goods"/>.
     /// </summary>
-    public List<Good> Products = new();
+    public List<Good> Goods = new();
 
     /// <summary>
     /// Объем хранилища.
@@ -29,4 +29,9 @@ public class Storage
     /// <see cref="Size"/>.
     /// </summary>
     public Size FreeSize { get; set; } = new();
+
+    /// <summary>
+    /// Идентификатор.
+    /// </summary>
+    public Guid Id { get; set; }
 }
