@@ -24,4 +24,9 @@ public class Good
     /// Идентификатор.
     /// </summary>
     public Guid Id { get; set; }
+
+    /// <summary>
+    /// Вес.
+    /// </summary>
+    public float Weight { get; set; }
 }

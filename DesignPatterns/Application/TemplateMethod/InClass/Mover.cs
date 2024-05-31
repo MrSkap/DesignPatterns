@@ -27,7 +27,7 @@ public class Mover
     /// <param name="type"><see cref="GoodType"/>.</param>
     public void MoveAllWithType(Storage from, Storage to, GoodType type)
     {
-        _logger.Information("Select {Type} from {From} and move to {To} storage",type,from.Id, to.Id);
+        _logger.Information("Select {Type} from {From} and move to {To} storage", type, from.Id, to.Id);
         Move(from, to, () => from.Goods.Where(x => x.Type == type).ToList());
     }
 

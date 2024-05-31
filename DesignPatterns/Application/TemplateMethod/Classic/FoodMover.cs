@@ -6,7 +6,7 @@ namespace Application.TemplateMethod.Classic;
 /// <summary>
 /// Переносит еду.
 /// </summary>
-public class FoodMover: DefaultMover
+public class FoodMover : DefaultMover
 {
     private readonly ILogger _logger = Log.ForContext<FoodMover>();
 
