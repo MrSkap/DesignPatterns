@@ -5,7 +5,7 @@ namespace Application.TemplateMethod.Extensions;
 /// <summary>
 /// Расширение для <see cref="Storage"/>.
 /// </summary>
-public static class StorageExtension
+public static class StorageMoverExtension
 {
     /// <summary>
     /// Перенести товары в текущее хранилище из указанного. Освобождает указанное хранилище.
