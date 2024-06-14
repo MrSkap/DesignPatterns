@@ -29,4 +29,10 @@
   </ItemGroup>
 
 
+  <ItemGroup>
+    <Folder Include="Observer\Event\" />
+    <Folder Include="Observer\Observable\" />
+  </ItemGroup>
+
+
 </Project>
