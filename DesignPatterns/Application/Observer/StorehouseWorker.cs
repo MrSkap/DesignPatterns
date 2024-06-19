@@ -27,7 +27,6 @@ public class StorehouseWorker
 
     private void MoveAllGoods(object? obj, AllGoodsPackedEventArgs args)
     {
-
     }
 
     private void CallForStoragesDelivering()
@@ -39,5 +38,4 @@ public class StorehouseWorker
     {
         _logger.Information("Storage {StorageId} is full, it contains these goods {Goods}", storage.Id, storage.Goods);
     }
-
 }
