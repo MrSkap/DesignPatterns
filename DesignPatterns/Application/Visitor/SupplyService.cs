@@ -4,7 +4,7 @@ using Serilog;
 namespace Application.Visitor;
 
 /// <inheritdoc />
-public class SupplyService: ISupplyService
+public class SupplyService : ISupplyService
 {
     private readonly StorageFilterOptions _options;
 
@@ -78,6 +78,7 @@ public class SupplyService: ISupplyService
         {
             return new Supply();
         }
+
         var filteredSupply = new Supply()
         {
             Storages = fullSupply.Storages.Select(x => x).ToList() ?? new List<Storage>(),

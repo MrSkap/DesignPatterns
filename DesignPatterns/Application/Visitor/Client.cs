@@ -20,7 +20,6 @@ public class Client
         _supplyService = supplyService;
         _goodsSupplyProvider = goodsSupplyProvider;
         _storageSupplyProvider = storageSupplyProvider;
-
     }
 
     /// <summary>

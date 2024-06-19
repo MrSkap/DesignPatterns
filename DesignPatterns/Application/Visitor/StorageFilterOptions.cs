@@ -11,6 +11,7 @@ public class StorageFilterOptions
     /// Максимальный размер.
     /// </summary>
     public Size? MaxSize { get; set; }
+
     /// <summary>
     /// Минимальный размер.
     /// </summary>
