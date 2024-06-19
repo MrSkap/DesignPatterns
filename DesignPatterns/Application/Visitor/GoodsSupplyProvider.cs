@@ -5,7 +5,7 @@ namespace Application.Visitor;
 /// <summary>
 /// Предоставляет товары.
 /// </summary>
-public class GoodsSupplyProvider: ProviderBase
+public class GoodsSupplyProvider : ProviderBase
 {
     private List<Good> _returnedGoods = new List<Good>();
 
