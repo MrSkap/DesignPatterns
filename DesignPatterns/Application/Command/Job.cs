@@ -8,34 +8,33 @@ namespace Application.Command;
 public class Job : ICommand
 {
     private readonly ILogger _logger = Log.ForContext<Job>();
-    private JobState _state;
     private Action _action = () => { };
 
     /// <summary>
     /// Состояние работы.
     /// </summary>
-    public JobState State => _state;
+    public JobState State { get; private set; }
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public void SetUp(Action action)
     {
         _action = action;
-        _state = JobState.NotStarted;
+        State = JobState.NotStarted;
     }
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public bool Execute()
     {
         try
         {
             _action.Invoke();
-            _state = JobState.Completed;
+            State = JobState.Completed;
             return true;
         }
         catch (Exception e)
         {
             _logger.Error(e, "Error in job");
-            _state = JobState.Faulted;
+            State = JobState.Faulted;
             return false;
         }
     }

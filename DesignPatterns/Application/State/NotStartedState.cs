@@ -8,9 +8,9 @@ namespace Application.State;
 /// </summary>
 public class NotStartedState : IState
 {
-    private ILogger _logger = Log.ForContext<CompletedState>();
+    private readonly ILogger _logger = Log.ForContext<CompletedState>();
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public Task Handle(List<Job> jobs)
     {
         _logger.Information("Not started state");

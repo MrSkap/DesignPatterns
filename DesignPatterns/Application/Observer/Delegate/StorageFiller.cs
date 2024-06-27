@@ -10,14 +10,14 @@ namespace Application.Observer.Delegate;
 /// </summary>
 public class StorageFiller : IDisposable
 {
-    private readonly Queue<Storage> _storages = new();
-    private readonly Queue<Good> _goods = new();
     private readonly CancellationTokenSource _cts = new();
     private readonly Task _fillingTask;
+    private readonly Queue<Good> _goods = new();
+    private readonly Queue<Storage> _storages = new();
+    private readonly Subject<Storage> _storagesSubject = new();
     private Good? _currentGood;
     private Storage? _currentStorage;
     private List<Storage> _packedStorages = new();
-    private readonly Subject<Storage> _storagesSubject = new();
 
     /// <summary>
     /// Действие, вызываемое, когда всех хранилища будут заполнены.
@@ -25,19 +25,27 @@ public class StorageFiller : IDisposable
     public Action? AllStoragesFullAction;
 
     /// <summary>
-    /// Событие - все товары упакованы.
+    /// Конструктор.
     /// </summary>
-    public event EventHandler<AllGoodsPackedEventArgs>? AllGoodsPacked;
+    public StorageFiller() => _fillingTask = FillingStorages(_cts.Token);
 
     /// <summary>
     /// Наблюдатель за заполненными хранилищами.
     /// </summary>
     public IObservable<Storage> FullStoragesObservable => _storagesSubject;
 
+    /// <inheritdoc/>
+    public void Dispose()
+    {
+        _cts.Cancel();
+        _fillingTask.Wait();
+        _cts.Dispose();
+    }
+
     /// <summary>
-    /// Конструктор.
+    /// Событие - все товары упакованы.
     /// </summary>
-    public StorageFiller() => _fillingTask = FillingStorages(_cts.Token);
+    public event EventHandler<AllGoodsPackedEventArgs>? AllGoodsPacked;
 
     /// <summary>
     /// Добавить хранилища для заполнения.
@@ -61,14 +69,6 @@ public class StorageFiller : IDisposable
         {
             _goods.Enqueue(good);
         }
-    }
-
-    /// <inheritdoc/>
-    public void Dispose()
-    {
-        _cts.Cancel();
-        _fillingTask.Wait();
-        _cts.Dispose();
     }
 
     private async Task FillingStorages(CancellationToken ct)

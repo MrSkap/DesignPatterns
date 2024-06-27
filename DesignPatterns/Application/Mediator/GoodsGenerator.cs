@@ -13,7 +13,7 @@ public class GoodsGenerator : IGoodsProvider
 
     private readonly Faker<Size> _sizeFaker = new();
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public IEnumerable<Good> GetGoods(GoodsFilterContext context)
     {
         SetUpFaker(context);

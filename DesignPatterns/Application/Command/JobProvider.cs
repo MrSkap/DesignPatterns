@@ -15,15 +15,13 @@ public class JobProvider
     /// <summary>
     /// Конструктор.
     /// </summary>
-    public JobProvider()
-    {
+    public JobProvider() =>
         JobsObservable = Observable.Interval(TimeSpan.FromSeconds(5)).Select(x =>
         {
             var job = new Job();
             job.SetUp(DoSmth);
             return job;
         });
-    }
 
     private void DoSmth()
     {

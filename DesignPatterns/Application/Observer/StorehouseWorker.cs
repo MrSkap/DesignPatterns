@@ -9,8 +9,8 @@ namespace Application.Observer;
 /// </summary>
 public class StorehouseWorker
 {
-    private ILogger _logger = Log.ForContext<StorehouseWorker>();
     private readonly StorageFiller _storageFiller;
+    private readonly ILogger _logger = Log.ForContext<StorehouseWorker>();
 
     /// <summary>
     /// Конструктор.
@@ -29,13 +29,7 @@ public class StorehouseWorker
     {
     }
 
-    private void CallForStoragesDelivering()
-    {
-        _logger.Information("All storages are full, please send me more!!!");
-    }
+    private void CallForStoragesDelivering() => _logger.Information("All storages are full, please send me more!!!");
 
-    private void NextStoragePacked(Storage storage)
-    {
-        _logger.Information("Storage {StorageId} is full, it contains these goods {Goods}", storage.Id, storage.Goods);
-    }
+    private void NextStoragePacked(Storage storage) => _logger.Information("Storage {StorageId} is full, it contains these goods {Goods}", storage.Id, storage.Goods);
 }

@@ -12,8 +12,8 @@ public class GoodsPacker
     private readonly GoodsGenerator _goodsGenerator;
     private readonly StorageGenerator _storageGenerator;
     private readonly IStorageService _storageService;
-    private Queue<Storage> _packedStorages = new Queue<Storage>();
-    private Queue<Good> _unpackedGoods = new Queue<Good>();
+    private readonly Queue<Storage> _packedStorages = new();
+    private readonly Queue<Good> _unpackedGoods = new();
 
     /// <summary>
     /// Конструктор.
@@ -56,16 +56,16 @@ public class GoodsPacker
 
     private IEnumerable<Storage> GetNewStorages()
     {
-        var newStorages = _storageGenerator.GetStorages(new StoragesFilterContext()
+        var newStorages = _storageGenerator.GetStorages(new StoragesFilterContext
         {
             Count = 10,
-            MaxSize = new Size()
+            MaxSize = new Size
             {
                 Depth = 10,
                 Height = 5,
                 Width = 5,
             },
-            MinSize = new Size()
+            MinSize = new Size
             {
                 Depth = 1,
                 Height = 1,
@@ -77,18 +77,18 @@ public class GoodsPacker
 
     private IEnumerable<Good> GetNewGoods()
     {
-        var newGoods = _goodsGenerator.GetGoods(new GoodsFilterContext()
+        var newGoods = _goodsGenerator.GetGoods(new GoodsFilterContext
         {
             MaxWeight = 1,
             MinWeight = 0.1f,
             Count = 10,
-            MinSize = new Size()
+            MinSize = new Size
             {
                 Depth = 0.1f,
                 Height = 0.1f,
                 Width = 0.1f,
             },
-            MaxSize = new Size()
+            MaxSize = new Size
             {
                 Depth = 1,
                 Height = 1,
@@ -98,9 +98,7 @@ public class GoodsPacker
         return newGoods;
     }
 
-    private IEnumerable<Storage> PackGoods()
-    {
+    private IEnumerable<Storage> PackGoods() =>
         //Packing process
-        return new List<Storage>();
-    }
+        new List<Storage>();
 }

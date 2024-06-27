@@ -8,9 +8,9 @@ namespace Application.State;
 public class SomeWorker
 {
     private IState _currentState;
-    private List<Job> _jobs = new List<Job>();
+    private readonly List<Job> _jobs = new();
 
-    private Dictionary<StateConstants, IState> _states = new()
+    private readonly Dictionary<StateConstants, IState> _states = new()
     {
         { StateConstants.NotStarted, new NotStartedState() },
         { StateConstants.InProgress, new InProgressState() },
@@ -20,10 +20,7 @@ public class SomeWorker
     /// <summary>
     /// Конструктор.
     /// </summary>
-    public SomeWorker()
-    {
-        _currentState = _states[StateConstants.NotStarted];
-    }
+    public SomeWorker() => _currentState = _states[StateConstants.NotStarted];
 
     /// <summary>
     /// Получить работы.
@@ -41,10 +38,7 @@ public class SomeWorker
     /// Начать работу
     /// Переход в состояние StateConstants.InProgress.
     /// </summary>
-    public void Start()
-    {
-        _currentState = _states[StateConstants.InProgress];
-    }
+    public void Start() => _currentState = _states[StateConstants.InProgress];
 
     /// <summary>
     /// Выполнить имеющиеся работы.

@@ -11,8 +11,8 @@ namespace Application.Iterator;
 public class GoodsIterator : IEnumerator<Good>
 {
     private readonly IGoodsProvider _provider;
-    private Good[]? _goods;
     private int _currentIndex;
+    private Good[]? _goods;
 
     /// <summary>
     /// Конструктор.
@@ -22,16 +22,6 @@ public class GoodsIterator : IEnumerator<Good>
     {
         _provider = provider;
         SetUpNewGoods();
-    }
-
-    private void SetUpNewGoods()
-    {
-        _goods = _provider.GetGoods(new GoodsFilterContext
-        {
-            MaxWeight = 10,
-            MinWeight = 0.1f,
-        }).ToArray();
-        _currentIndex = 0;
     }
 
     /// <summary>
@@ -68,6 +58,16 @@ public class GoodsIterator : IEnumerator<Good>
     public void Dispose()
     {
         _goods = null;
+        _currentIndex = 0;
+    }
+
+    private void SetUpNewGoods()
+    {
+        _goods = _provider.GetGoods(new GoodsFilterContext
+        {
+            MaxWeight = 10,
+            MinWeight = 0.1f,
+        }).ToArray();
         _currentIndex = 0;
     }
 }

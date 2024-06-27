@@ -8,9 +8,9 @@ namespace Application.State;
 /// </summary>
 public class CompletedState : IState
 {
-    private ILogger _logger = Log.ForContext<CompletedState>();
+    private readonly ILogger _logger = Log.ForContext<CompletedState>();
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public Task Handle(List<Job> jobs)
     {
         var dictionary = jobs.GroupBy(x => x.State).ToDictionary(x => x.Key);
