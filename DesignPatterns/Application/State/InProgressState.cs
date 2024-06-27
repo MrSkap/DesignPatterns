@@ -10,7 +10,7 @@ public class InProgressState : IState
 {
     private readonly ILogger _logger = Log.ForContext<CompletedState>();
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public async Task Handle(List<Job> jobs)
     {
         _logger.Information("Start doing jobs");

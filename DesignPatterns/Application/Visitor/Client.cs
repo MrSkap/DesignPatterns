@@ -5,9 +5,9 @@ namespace Application.Visitor;
 /// </summary>
 public class Client
 {
-    private readonly ISupplyService _supplyService;
     private readonly GoodsSupplyProvider _goodsSupplyProvider;
     private readonly StorageSupplyProvider _storageSupplyProvider;
+    private readonly ISupplyService _supplyService;
 
     /// <summary>
     /// Конструктор.

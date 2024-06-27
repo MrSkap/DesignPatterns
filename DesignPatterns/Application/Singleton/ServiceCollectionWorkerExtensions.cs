@@ -2,7 +2,6 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Application.Singleton;
 
-
 /// <summary>
 /// Расширение для дообавления сервисов.
 /// </summary>

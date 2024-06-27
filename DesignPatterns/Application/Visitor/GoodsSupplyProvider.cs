@@ -7,22 +7,20 @@ namespace Application.Visitor;
 /// </summary>
 public class GoodsSupplyProvider : ProviderBase
 {
-    private List<Good> _returnedGoods = new List<Good>();
+    private List<Good> _returnedGoods = new();
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public override Supply ProvideWithFiltering(ISupplyService service) => service.GetGoodsSupply(this);
 
-    /// <inheritdoc />
-    public override Supply Provide()
-    {
-        return new Supply()
+    /// <inheritdoc/>
+    public override Supply Provide() =>
+        new()
         {
-            Goods = new List<Good>()
+            Goods = new List<Good>
             {
-                new Good()
-            }
+                new(),
+            },
         };
-    }
 
     /// <summary>
     /// Получить обратно товары.
@@ -39,9 +37,7 @@ public class GoodsSupplyProvider : ProviderBase
     /// <summary>
     /// Отправить неподошедшие товары.
     /// </summary>
-    public void SendAllGoodsBack()
-    {
+    public void SendAllGoodsBack() =>
         // отправка товаров обратно
         _returnedGoods = new List<Good>();
-    }
 }

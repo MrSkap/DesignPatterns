@@ -5,7 +5,7 @@ namespace Application.Command;
 /// </summary>
 public class Worker
 {
-    private List<Job> _failedJobs = new();
+    private readonly List<Job> _failedJobs = new();
 
     /// <summary>
     /// Конструктор.

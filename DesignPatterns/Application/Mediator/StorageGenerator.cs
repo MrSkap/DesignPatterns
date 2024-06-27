@@ -9,10 +9,10 @@ namespace Application.Mediator;
 /// </summary>
 public class StorageGenerator : IStorageProvider
 {
-    private readonly Faker<Storage> _storageFaker = new();
     private readonly Faker<Size> _sizeFaker = new();
+    private readonly Faker<Storage> _storageFaker = new();
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public IEnumerable<Storage> GetStorages(StoragesFilterContext context)
     {
         SetUpFaker(context);

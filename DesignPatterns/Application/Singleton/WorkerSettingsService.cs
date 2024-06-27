@@ -28,11 +28,9 @@ public class WorkerSettingsService
     /// Получить текущие настройки.
     /// </summary>
     /// <returns></returns>
-    public Dictionary<string, string> GetCurrentSettings() => new Dictionary<string, string>();
+    public Dictionary<string, string> GetCurrentSettings() => new();
 
-    private Dictionary<string, string> ReadSettings()
-    {
+    private Dictionary<string, string> ReadSettings() =>
         //read settings
-        return new Dictionary<string, string>();
-    }
+        new();
 }

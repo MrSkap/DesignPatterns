@@ -11,10 +11,7 @@ public abstract class ProviderBase
     /// Принять.
     /// </summary>
     /// <param name="service"></param>
-    public virtual Supply ProvideWithFiltering(ISupplyService service)
-    {
-        return service.GetDefaultSupply(this);
-    }
+    public virtual Supply ProvideWithFiltering(ISupplyService service) => service.GetDefaultSupply(this);
 
     /// <summary>
     /// Поставить.

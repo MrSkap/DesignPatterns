@@ -8,9 +8,7 @@ namespace Application.Strategy.Fillers;
 public class GoodsTypeFiller : IFiller
 {
     /// <inheritdoc/>
-    public bool FillStorages(List<Storage> storages, List<Good> goods)
-    {
+    public bool FillStorages(List<Storage> storages, List<Good> goods) =>
         //todo: implement filter
-        return true;
-    }
+        true;
 }

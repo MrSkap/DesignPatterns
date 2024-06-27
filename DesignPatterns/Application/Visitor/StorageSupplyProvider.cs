@@ -13,17 +13,15 @@ public class StorageSupplyProvider : ProviderBase
     public override Supply ProvideWithFiltering(ISupplyService service) => service.GetStoragesSupply(this);
 
     /// <inheritdoc/>
-    public override Supply Provide()
-    {
+    public override Supply Provide() =>
         //для получения поставки используется фильтрация
-        return new()
+        new()
         {
             Storages = new List<Storage>
             {
                 new(),
             },
         };
-    }
 
     /// <summary>
     /// Установить настройки фильтрации при получении

@@ -3,23 +3,19 @@ using Serilog;
 
 namespace Application.Visitor;
 
-/// <inheritdoc />
+/// <inheritdoc/>
 public class SupplyService : ISupplyService
 {
+    private readonly ILogger _logger = Log.ForContext<SupplyService>();
     private readonly StorageFilterOptions _options;
 
     /// <summary>
     /// Конструктор.
     /// </summary>
     /// <param name="options"><see cref="StorageFilterOptions"/>.</param>
-    public SupplyService(StorageFilterOptions options)
-    {
-        _options = options;
-    }
+    public SupplyService(StorageFilterOptions options) => _options = options;
 
-    private readonly ILogger _logger = Log.ForContext<SupplyService>();
-
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public Supply GetStoragesSupply(ProviderBase supplyProvider)
     {
         if (supplyProvider.GetType() != typeof(GoodsSupplyProvider))
@@ -34,7 +30,7 @@ public class SupplyService : ISupplyService
         return res;
     }
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public Supply GetGoodsSupply(ProviderBase supplyProvider)
     {
         if (supplyProvider.GetType() != typeof(GoodsSupplyProvider))
@@ -58,11 +54,11 @@ public class SupplyService : ISupplyService
         return resultedSupply;
     }
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public Supply GetDefaultSupply(ProviderBase supplyProvider)
     {
         var supply = supplyProvider.Provide();
-        var filteredSupply = new Supply()
+        var filteredSupply = new Supply
         {
             Storages = supply.Storages.Where(x => x.FreeVolume > 0).ToList(),
             Goods = supply.Goods.Where(x => x.Type != GoodType.None).ToList(),
@@ -79,7 +75,7 @@ public class SupplyService : ISupplyService
             return new Supply();
         }
 
-        var filteredSupply = new Supply()
+        var filteredSupply = new Supply
         {
             Storages = fullSupply.Storages.Select(x => x).ToList() ?? new List<Storage>(),
         };

@@ -10,7 +10,7 @@ public class FoodMover : DefaultMover
 {
     private readonly ILogger _logger = Log.ForContext<FoodMover>();
 
-    /// <inheritdoc />
+    /// <inheritdoc/>
     protected override void Move(Storage from, Storage to)
     {
         _logger.Information("Select food from {From} and move to {To} storage", from.Id, to.Id);
