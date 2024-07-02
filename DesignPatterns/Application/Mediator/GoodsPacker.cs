@@ -10,9 +10,9 @@ namespace Application.Mediator;
 public class GoodsPacker
 {
     private readonly GoodsGenerator _goodsGenerator;
+    private readonly Queue<Storage> _packedStorages = new();
     private readonly StorageGenerator _storageGenerator;
     private readonly IStorageService _storageService;
-    private readonly Queue<Storage> _packedStorages = new();
     private readonly Queue<Good> _unpackedGoods = new();
 
     /// <summary>
