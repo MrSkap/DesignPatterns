@@ -9,8 +9,8 @@ namespace Application.Observer;
 /// </summary>
 public class StorehouseWorker
 {
-    private readonly StorageFiller _storageFiller;
     private readonly ILogger _logger = Log.ForContext<StorehouseWorker>();
+    private readonly StorageFiller _storageFiller;
 
     /// <summary>
     /// Конструктор.

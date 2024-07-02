@@ -7,7 +7,6 @@ namespace Application.State;
 /// </summary>
 public class SomeWorker
 {
-    private IState _currentState;
     private readonly List<Job> _jobs = new();
 
     private readonly Dictionary<StateConstants, IState> _states = new()
@@ -16,6 +15,8 @@ public class SomeWorker
         { StateConstants.InProgress, new InProgressState() },
         { StateConstants.Completed, new CompletedState() },
     };
+
+    private IState _currentState;
 
     /// <summary>
     /// Конструктор.
