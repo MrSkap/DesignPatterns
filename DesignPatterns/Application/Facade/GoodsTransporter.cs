@@ -1,3 +1,5 @@
+using Domain.Models;
+
 namespace Application.Facade;
 
 /// <summary>

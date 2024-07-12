@@ -1,6 +1,4 @@
-using Domain.Models;
-
-namespace Application.Facade;
+namespace Domain.Models;
 
 /// <summary>
 /// Полылка.
